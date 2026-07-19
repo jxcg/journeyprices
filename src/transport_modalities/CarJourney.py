@@ -1,5 +1,5 @@
 from transport_modalities.JourneyModality import JourneyModality
-from transport_modalities.units import LITRES_PER_UK_GALLON
+from units import LITRES_PER_UK_GALLON
 
 class CarJourney(JourneyModality):
     """
