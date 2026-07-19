@@ -1,0 +1,25 @@
+name: Lint and Type Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install ruff and mypy
+        run: pip install ruff==0.15.22 mypy==2.3.0
+
+      - name: Ruff (lint)
+        run: ruff check src
+
+      - name: Mypy (type check)
+        run: mypy src
