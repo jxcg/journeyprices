@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JourneyPrices</title>
+</head>
+<body>
+    <h1>JourneyPrices</h1>
+    <p>What is the smartest way for me to get there?</p>
+
+    <form action="/compare" method="post">
+        <fieldset>
+            <legend>Trip</legend>
+            <label>From <input type="text" name="origin" required></label>
+            <label>To <input type="text" name="destination" required></label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Car</legend>
+            <label>Distance (miles) <input type="number" step="any" name="car_distance_miles" required></label>
+            <label>Duration (minutes) <input type="number" step="any" name="car_duration_minutes" required></label>
+            <label>Fuel economy (mpg) <input type="number" step="any" name="car_mpg" required></label>
+            <label>Fuel price (pence/litre) <input type="number" step="any" name="pennies_per_litre" required></label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Train</legend>
+            <label>Duration (minutes) <input type="number" step="any" name="train_duration_minutes" required></label>
+            <label>Ticket price (£) <input type="number" step="any" name="train_ticket_price" required></label>
+        </fieldset>
+
+        <button type="submit">Compare</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JourneyPrices - Results</title>
+</head>
+<body>
+    <h1>{{ journey.origin }} &rarr; {{ journey.destination }}</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Mode</th>
+                <th>Cost</th>
+                <th>Duration</th>
+                <th>Tags</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for option in journey.options %}
+            <tr>
+                <td>{{ option.transport_mode }}</td>
+                <td>£{{ "%.2f"|format(option.calculate_cost()) }}</td>
+                <td>{{ option.duration_minutes|int }} min</td>
+                <td>
+                    {% if option is sameas cheapest %}Cheapest{% endif %}
+                    {% if option is sameas fastest %}Fastest{% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p><a href="/">Back</a></p>
+</body>
+</html>
