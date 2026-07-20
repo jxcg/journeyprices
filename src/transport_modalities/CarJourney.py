@@ -26,6 +26,7 @@ class CarJourney(JourneyModality):
         self.pennies_per_litre = pennies_per_litre
 
     def calculate_cost(self) -> float:
+        assert self.distance_miles is not None, "CarJourney always requires a distance"
         gallons_used = self.distance_miles / self.car_mpg
         litres_used = gallons_used * LITRES_PER_UK_GALLON
         cost_in_pence = litres_used * self.pennies_per_litre

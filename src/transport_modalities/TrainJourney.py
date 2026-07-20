@@ -8,8 +8,8 @@ class TrainJourney(JourneyModality):
     a fares lookup, once that integration exists).
     """
 
-    def __init__(self, distance_miles: float, duration_minutes: float, ticket_price: float):
-        super().__init__(transport_mode="train", distance_miles=distance_miles, duration_minutes=duration_minutes)
+    def __init__(self, duration_minutes: float, ticket_price: float):
+        super().__init__(transport_mode="train", duration_minutes=duration_minutes)
         self.ticket_price = ticket_price
 
     def calculate_cost(self) -> float:
