@@ -1,6 +1,7 @@
 from transport_modalities.JourneyModality import JourneyModality
 from units import LITRES_PER_UK_GALLON
 
+
 class CarJourney(JourneyModality):
     """
     A journey by car. Cost is derived from fuel consumed: distance covered,
@@ -10,8 +11,8 @@ class CarJourney(JourneyModality):
     automatically from a number plate or postcode is a future feature (see
     PLAN.md), not implemented yet.
 
-    Ideally would like to supply Postcode A to Postcode B, then distance-miles and minutes will be supplied from ANOTHER engine.
-
+    Ideally would like to supply Postcode A to Postcode B, then distance-miles
+    and minutes will be supplied from ANOTHER engine.
     """
 
     def __init__(
@@ -21,7 +22,11 @@ class CarJourney(JourneyModality):
         car_mpg: float,
         pennies_per_litre: float,
     ):
-        super().__init__(transport_mode="car", distance_miles=distance_miles, duration_minutes=duration_minutes)
+        super().__init__(
+            transport_mode="car",
+            distance_miles=distance_miles,
+            duration_minutes=duration_minutes,
+        )
         self.car_mpg = car_mpg
         self.pennies_per_litre = pennies_per_litre
 

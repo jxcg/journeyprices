@@ -2,29 +2,47 @@
 name = "journeyprices"
 version = "0.1.0"
 description = "Compares real cost, time, and value across transport options."
-requires-python = ">=3.13"
+readme = "README.md"
+requires-python = ">=3.14"
 dependencies = [
-    "flask",
+    "flask>=3.1.3",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
+# Development tools. uv installs this group by default with `uv sync`.
 dev = [
-    "ruff==0.15.22",
-    "mypy==2.3.0",
-    "pytest==9.1.1",
+    "ruff>=0.17.4",
+    "mypy>=2.4.1",
+    "pytest>=9.2.0",
 ]
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling>=1.33.0"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/transport_modalities"]
 
+[tool.ruff]
+target-version = "py314"
+src = ["src"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes: unused imports, undefined names
+    "I",   # import sorting
+    "UP",  # use modern Python syntax
+    "B",   # bugbear: likely bugs
+    "SIM", # simpler equivalent code
+]
+
 [tool.mypy]
+python_version = "3.14"
+strict = true
+# The code imports from `src` as its root, for example `from units import ...`.
+# These two settings tell mypy to resolve modules the same way.
 mypy_path = "src"
 explicit_package_bases = true
-ignore_missing_imports = true
-
-[tool.ruff]
-src = ["src"]
+exclude = ["^\\.venv/"]

@@ -1,3 +1,7 @@
 PLAN/
-**/__pycache__
-
+__pycache__/
+.venv/
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
