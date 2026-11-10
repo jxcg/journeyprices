@@ -15,7 +15,12 @@ class JourneyModality(ABC):
     entered directly rather than derived.
     """
 
-    def __init__(self, transport_mode: str, duration_minutes: float, distance_miles: float | None = None):
+    def __init__(
+        self,
+        transport_mode: str,
+        duration_minutes: float,
+        distance_miles: float | None = None,
+    ):
         self.transport_mode = transport_mode
         self.duration_minutes = duration_minutes
         self.distance_miles = distance_miles

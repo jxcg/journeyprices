@@ -9,17 +9,20 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.13"
+      # Installs uv. uv reads .python-version and installs that Python.
+      - uses: astral-sh/setup-uv@v10.3.3
 
-      - name: Install ruff and mypy
-        run: pip install ruff==0.15.22 mypy==2.3.0
+      # --locked fails the job if uv.lock is out of date with pyproject.toml.
+      - name: Install dependencies
+        run: uv sync --locked
 
       - name: Ruff (lint)
-        run: ruff check src
+        run: uv run ruff check .
+
+      - name: Ruff (format)
+        run: uv run ruff format --check .
 
       - name: Mypy (type check)
-        run: mypy src
+        run: uv run mypy .
