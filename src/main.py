@@ -7,7 +7,7 @@ from transport_modalities.TrainJourney import TrainJourney
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def index() -> str:
     return render_template("index.html")
 
@@ -15,8 +15,8 @@ def index() -> str:
 @app.route("/compare", methods=["POST"])
 def compare() -> str:
     journey = Journey(
-        origin=request.form["origin"],
-        destination=request.form["destination"],
+        location_start=request.form["location_start"],
+        location_end=request.form["location_end"],
     )
 
     journey.add_option(
